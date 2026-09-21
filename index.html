@@ -78,7 +78,7 @@
   /* !important guards below override the theme's own default button:hover/:focus/:active colors, which otherwise paint native <button> elements pink regardless of our classes */
   .nav-toggle{
     display:none;align-items:center;justify-content:center;cursor:pointer;
-    width:42px;height:42px;border-radius:10px;padding:0;
+    width:42px;height:42px;border-radius:10px;padding:0;flex:none;
     background:transparent !important;border:1.5px solid var(--line) !important;
   }
   .nav-toggle:hover, .nav-toggle:focus, .nav-toggle:active{
@@ -98,6 +98,7 @@
     nav.main-nav.open{display:flex;}
     .nav-toggle{display:flex;}
     .header-cta{display:none;}
+    .brand img{height:34px;} /* the logo's own file is a wide lockup — shrink it on phones so it doesn't crowd the hamburger button */
   }
 
   /* Placeholder image blocks */
@@ -178,7 +179,13 @@
   }
   .disclaimer{margin-top:22px;font-size:12.5px;color:var(--ink-soft);font-style:italic;}
 
-  @media (max-width:860px){ .split{grid-template-columns:1fr;} .split > *{order:0;} }
+  @media (max-width:860px){
+    .split{grid-template-columns:1fr;}
+    .split > *{order:0;}
+    /* Fixed aspect-ratio boxes could reserve more height than the photo needed at narrow widths, leaving an empty gap below it — let the image flow at its own height on mobile instead */
+    .split .ph{aspect-ratio:auto;min-height:0;border-radius:14px;}
+    .split .ph img{position:static;width:100%;height:auto;}
+  }
 
   /* Approach grid */
   .approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
@@ -309,6 +316,7 @@
     .situations-grid, .approach-grid, .coach-grid, .review-grid, .process-grid{grid-template-columns:1fr;}
     .matcher-card{padding:24px 18px;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
+    .footer-brand img{height:36px;}
   }
 </style>
 
@@ -339,9 +347,9 @@
           <a class="btn btn-outline" href="https://wa.me/971585993823?text=Hi%20ETAD!%20I%20would%20like%20to%20book%20a%20free%20first%20session%20and%20learn%20more%20about%20personal%20training%20for%20women." target="_blank" rel="noreferrer">Book A Free First Session</a>
         </div>
         <div class="hero-proof">
-          <div><i>★★★★★</i><span><small>Google Rating</small></span></div>
-          <div><span><strong>Female &amp; Male</strong><small>Personal Trainers</small></span></div>
-          <div><span><strong>Home · Gym · Outdoor</strong><small>Across Abu Dhabi</small></span></div>
+          <div><i>5.0</i><span><small>&nbsp;Google Rating</small></span></div>
+          <div><span><strong>Female &amp; Male</strong><small>&nbsp;Personal Trainers</small></span></div>
+          <div><span><strong>Home · Gym · Outdoor</strong><small> &nbsp;Across Abu Dhabi</small></span></div>
         </div>
       </div>
       <div class="hero-visual">
